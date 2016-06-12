@@ -13,7 +13,7 @@ sudo docker run -d -p 9200:9200 -p 9300:9300 \
 ```
 
 ###Sample elasticsearch.yml configuration file
-It includes cloud-azure addon configuration for snapshot/restore and default search-guard configuration for basic authentication. **_You should include all of your search-guard configuration files under config directory defined above._**
+It includes cloud-azure addon configuration for snapshot/restore and default search-guard configuration for basic authentication. **_You should include all of your search-guard configuration files together with truststore.jks and keystore.jks certificates under the config directory defined above._**
 
 For more details about search-guard and how to generate demo certificates follow this link:
 [search-guard-ssl quickstart](https://github.com/floragunncom/search-guard-ssl-docs/blob/master/quickstart.md])
