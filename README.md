@@ -1,5 +1,5 @@
 # elasticsearch-docker
-Another docker image for Elasticsearch with SearchGuard and Azure(Snapshot/Restore) Integration. Kopf & Elastic HQ plugins are also included.
+Another docker image for Elasticsearch based on official docker image with SearchGuard and Azure(Snapshot/Restore) integration. Kopf & Elastic HQ plugins are also included.
 
 ###How to initialize the image from docker hub:
 ```bash
