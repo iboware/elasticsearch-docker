@@ -1,6 +1,8 @@
 # elasticsearch-docker
 Another docker image for Elasticsearch based on official docker image with SearchGuard and Azure(Snapshot/Restore) integration. Kopf & Elastic HQ plugins are also included.
 
+Click here for the [Docker Repository](https://hub.docker.com/r/iboware/elasticsearch/)
+
 ###How to initialize the image from docker hub:
 ```bash
 sudo docker run -d -p 9200:9200 -p 9300:9300 \
