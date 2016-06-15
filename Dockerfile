@@ -60,11 +60,11 @@ RUN gosu elasticsearch bin/plugin install -b com.floragunn/search-guard-ssl/2.3.
 RUN gosu elasticsearch bin/plugin install -b com.floragunn/search-guard-2/2.3.3.0-rc1
 
 #add search-guard-ssl openssl dependencies
-RUN gosu wget http://ftp.de.debian.org/debian/pool/main/a/apr/libapr1_1.5.1-3_amd64.deb
-RUN gosu wget dpkg -i libapr1_1.5.1-3_amd64.deb
-RUN gosu rm libapr1_1.5.1-3_amd64.deb
-RUN gosu wget http://repo1.maven.org/maven2/io/netty/netty-tcnative/1.1.33.Fork15/netty-tcnative-1.1.33.Fork15-linux-x86_64.jar
-RUN gosu mv netty-tcnative-1.1.33.Fork15-linux-x86_64.jar plugins/searchguard-ssl/
+RUN gosu root wget http://ftp.de.debian.org/debian/pool/main/a/apr/libapr1_1.5.1-3_amd64.deb
+RUN gosu root dpkg -i libapr1_1.5.1-3_amd64.deb
+RUN gosu root rm libapr1_1.5.1-3_amd64.deb
+RUN gosu root wget http://repo1.maven.org/maven2/io/netty/netty-tcnative/1.1.33.Fork15/netty-tcnative-1.1.33.Fork15-linux-x86_64.jar
+RUN gosu root mv netty-tcnative-1.1.33.Fork15-linux-x86_64.jar plugins/search-guard-ssl/
 ###############################################################################
 
 EXPOSE 9200 9300
