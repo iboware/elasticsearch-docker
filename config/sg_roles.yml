@@ -1,0 +1,123 @@
+#<sg_role_name>:
+#  indices:
+#    '<indexname or alias>':
+#      '<type>':  
+#        - '<permission>'
+#  dls: '<querydsl query>'
+#  fls:
+#    - '<field>'
+#    - '<field>'
+
+# Allows everything
+# but not changes to searchguard config/index
+sg_all_access:
+  cluster:
+    - '*'
+  indices:
+    '*':
+      '*':
+        - '*'
+        
+sg_role_starfleet:
+  indices:
+    sf:
+       ships:  
+         - READ
+       public:  
+         - 'indices:*'
+       students:  
+         - READ
+       alumni:  
+         - READ
+    'pub*':
+       '*':  
+         - READ
+
+sg_role_starfleet_captains:
+  indices:
+    sf:
+       '*':  
+         - CRUD
+    pub*:
+       '*':  
+         - CRUD 
+  cluster:
+    - 'cluster:monitor*'
+  
+
+sg_readonly_and_monitor:
+  cluster:
+    - CLUSTER_MONITOR
+  indices:
+    '*':
+      '*':
+        - ALL
+
+sg_readonly:
+  indices:
+    '*':
+      '*':
+        - READ
+
+sg_readonly_dlsfls:
+  indices:
+    '*':
+      '*':
+        - READ    
+  dls: '{"term" : {"_type" : "legends"}}'
+  fls:
+    - 'aaa'
+    - 'bbb'
+
+sg_transport_client:
+  cluster:
+      - cluster:monitor/nodes/liveness
+      - cluster:monitor/state
+
+sg_kibana4:
+  cluster: 
+      - cluster:monitor/nodes/info
+      - cluster:monitor/health
+  indices:
+    '*':
+      '*':
+        - READ
+        - indices:admin/mappings/fields/get*
+        - indices:admin/validate/query*
+        - indices:admin/get*
+    '?kibana':
+      '*':
+        - indices:admin/exists*
+        - indices:admin/mapping/put*
+        - indices:admin/mappings/fields/get*
+        - indices:admin/refresh*
+        - indices:admin/validate/query*
+        - indices:data/read/get*
+        - indices:data/read/mget*
+        - indices:data/read/search*
+        - indices:data/write/delete*
+        - indices:data/write/index*
+        - indices:data/write/update*
+
+sg_kibana4_server:
+  cluster:
+      - cluster:monitor/nodes/info
+      - cluster:monitor/health
+  indices:
+    '?kibana':
+      '*':
+        - ALL
+
+sg_logstash:
+  cluster:
+    - indices:admin/template/get
+    - indices:admin/template/put
+  indices:
+    'logstash-*':
+      '*':
+        - CRUD
+        - CREATE_INDEX
+    '*beat*':
+      '*':
+        - CRUD
+        - CREATE_INDEX

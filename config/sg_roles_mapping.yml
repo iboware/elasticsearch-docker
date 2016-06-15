@@ -1,0 +1,49 @@
+sg_role_starfleet:
+  backendroles:
+    - starfleet
+    - captains
+    - defectors
+  hosts:
+    - "*.starfleetintranet.com"
+  users:
+    - worf
+
+sg_role_starfleet_captains:
+  backendroles:
+    - captains
+
+sg_role_klingons1:
+  backendroles:
+    - klingon
+  hosts:
+    - "*.klingongov.kli"
+  users:
+    - worf
+
+sg_logstash:
+  users:
+    - logstash
+    
+sg_kibana4_server:
+  users:
+    - kibanaserver
+    
+sg_kibana4:
+  users:
+    - kibanaro
+
+sg_all_access:
+  users:
+    - admin
+    
+sg_public:
+  users:
+    - '*'
+    
+sg_readall:
+  users:
+    - readall
+    
+sg_readonly_dlsfls:
+  users:
+    - dlsflsuser
