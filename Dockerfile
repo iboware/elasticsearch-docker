@@ -1,4 +1,4 @@
-FROM java:8-jre
+FROM iboware/oraclejdk8
 
 # grab gosu for easy step-down from root
 ENV GOSU_VERSION 1.7
@@ -60,11 +60,12 @@ RUN gosu elasticsearch bin/plugin install -b com.floragunn/search-guard-ssl/2.3.
 RUN gosu elasticsearch bin/plugin install -b com.floragunn/search-guard-2/2.3.3.0-rc1
 
 #add search-guard-ssl openssl dependencies
-RUN gosu root wget http://ftp.de.debian.org/debian/pool/main/a/apr/libapr1_1.5.1-3_amd64.deb
-RUN gosu root dpkg -i libapr1_1.5.1-3_amd64.deb
-RUN gosu root rm libapr1_1.5.1-3_amd64.deb
-RUN gosu root wget http://repo1.maven.org/maven2/io/netty/netty-tcnative/1.1.33.Fork15/netty-tcnative-1.1.33.Fork15-linux-x86_64.jar
-RUN gosu root mv netty-tcnative-1.1.33.Fork15-linux-x86_64.jar plugins/search-guard-ssl/
+RUN gosu root wget http://repo1.maven.org/maven2/io/netty/netty-tcnative/1.1.33.Fork17/netty-tcnative-1.1.33.Fork17-linux-x86_64.jar
+RUN gosu root mv netty-tcnative-1.1.33.Fork17-linux-x86_64.jar plugins/search-guard-ssl/
+RUN gosu root wget http://ftp.de.debian.org/debian/pool/main/a/apr/libapr1_1.5.2-4_amd64.deb
+RUN gosu root wget http://ftp.de.debian.org/debian/pool/main/o/openssl/libssl1.0.2_1.0.2h-1_amd64.deb
+RUN gosu root wget http://ftp.de.debian.org/debian/pool/main/o/openssl/openssl_1.0.2h-1_amd64.deb
+RUN gosu root dpkg -i *.deb && rm *.deb
 ###############################################################################
 
 EXPOSE 9200 9300
