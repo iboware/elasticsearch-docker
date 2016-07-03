@@ -59,7 +59,7 @@ RUN gosu elasticsearch bin/plugin install royrusso/elasticsearch-HQ
 RUN gosu elasticsearch bin/plugin install cloud-azure
 RUN gosu elasticsearch bin/plugin install lmenezes/elasticsearch-kopf
 RUN gosu elasticsearch bin/plugin install -b com.floragunn/search-guard-ssl/2.3.3.13
-RUN gosu elasticsearch bin/plugin install -b com.floragunn/search-guard-2/2.3.3.1
+RUN gosu elasticsearch bin/plugin install -b com.floragunn/search-guard-2/2.3.3.2
 
 #add search-guard-ssl openssl dependencies
 RUN gosu root wget http://repo1.maven.org/maven2/io/netty/netty-tcnative/1.1.33.Fork17/netty-tcnative-1.1.33.Fork17-linux-x86_64.jar
